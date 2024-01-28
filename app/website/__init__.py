@@ -22,7 +22,7 @@ def create_app():
     
     app.config['SECRET_KEY'] = "helloworld"
     #app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
-    #app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://username:password@14.41.50.12/dbname'
+    #app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://username:password@00.00.00.00/dbname'
     ##app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:@localhost/test"
     #app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:@localhost/" + "database.db"
     #app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:@localhost/test"    
@@ -37,7 +37,7 @@ def create_app():
     chaine = "mysql+pymysql://mansour:" + mdp + "@" + ip + ":3306/test"
     #ma_variable = os.environ.get('MA_VARIABLE', 'valeur_par_defaut')
     app.config['SQLALCHEMY_DATABASE_URI'] = chaine
-    #app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://mansour:Fender00@34.72.216.112:3306/test"
+    #app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://mansour:mdp00@00.00.000.000:3306/test"
 
     db.init_app(app)
 
