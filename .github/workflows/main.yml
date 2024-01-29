@@ -28,7 +28,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install pytest  # Installer pytest
-        working-directory: /app  # Spécifiez le chemin vers votre code Python
+        working-directory: app/  # Spécifiez le chemin vers votre code Python
 
       - name: Run tests with pytest
         run: |
