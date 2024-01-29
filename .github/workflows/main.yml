@@ -33,7 +33,30 @@ jobs:
       - name: Run tests with pytest
         run: |
           pytest
-        #working-directory: python-api-handle-it/app/
+        #working-directory: app/
+
+    #######
+
+      - name: Install Flake8
+        run: pip install flake8
+
+      - name: Run Flake8
+        run: flake8 --exclude=test_my_module.py
+        working-directory: app/
+
+      - name: Install radon
+        run: pip install radon
+
+      - name: Analyze Cyclomatic Complexity
+        run: radon cc -s -a -e "venv/*" .
+
+      - name: Install cpplint
+        run: pip install cpplint
+
+      - name: Check Code Duplication
+        run: cpplint --recursive 
+
+
 
 
 
