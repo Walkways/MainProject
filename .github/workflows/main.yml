@@ -12,10 +12,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '14'
+
 
       # Ajoutez vos tâches de test et de CI ici
       
@@ -37,30 +34,6 @@ jobs:
 
     ########
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-
-      - name: Build and Push Docker Image
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          #DOCKER_USERNAME: "mansoursou"
-          
-        run: |
-          docker buildx create --use
-          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-          docker buildx build --push -t mansoursou/mon_app:latest -f Dockerfile .
-    
-
-
-
-    
-
-
-
-
-    #########
-
       - name: Install Flake8
         run: pip install flake8
 
@@ -78,9 +51,26 @@ jobs:
         run: pip install cpplint
 
       - name: Check Code Duplication
-        run: cpplint --recursive .
+        run: cpplint --recursive . 
 
 
+
+    #########
+
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build and Push Docker Image
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          #DOCKER_USERNAME: "mansoursou"
+          
+        run: |
+          docker buildx create --use
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          docker buildx build --push -t mansoursou/mon_app:latest -f Dockerfile .
 
 
 
