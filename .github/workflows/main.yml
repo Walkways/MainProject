@@ -109,12 +109,12 @@ jobs:
 
           # Generates an execution plan for Terraform
       - name: Terraform Plan
-        run: terraform plan -input=false -var= "${{ secrets.DB_PASSWORD }}"
+        run: terraform plan -input=false -var="db_password=${{ secrets.DB_PASSWORD }}"
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
 
       - name: Terraform Apply      
-        run: terraform apply -auto-approve -input=false -var=${{ secrets.DB_PASSWORD }}          
+        run: terraform apply -auto-approve -input=false -var="db_password=${{ secrets.DB_PASSWORD }}"          
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
 
